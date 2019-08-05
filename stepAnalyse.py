@@ -9,13 +9,15 @@ except NameError:
 
 STEP_PREFIXES = ["CUKE_STEP_(", "GIVEN(", "WHEN(", "THEN("]
 REGEX_PREFIX = "REGEX_PARAM"
+OBJECT_TYPE_ANNOTATION = "//@OBJECT_TYPE: "
 MAC_TEST_PATH = "/Users/lucaschuller/Documents/GitHub/CocktailCalc"
 
 
 class Step(object):
 
-    def __init__(self, text):
+    def __init__(self, text, object_type=""):
         self.text = text
+        self.object_type = object_type
         self.params = list()
 
 
@@ -53,16 +55,25 @@ def _get_step_list(self, root_path, file_postfix):
         count = count+1
         current_file = open(document, "r")
 
+        annotation_found = False
         for line in current_file:
             if REGEX_PREFIX in line:
                 param = line.split('(', 1)[1].split(',')[0]
                 capture = _get_param_capture(steps[len(steps)-1])
                 steps[len(steps)-1].params.append(Param(param, capture))
+            elif OBJECT_TYPE_ANNOTATION in line:
+                param = line.split(OBJECT_TYPE_ANNOTATION, 1)[1]
+                steps.append(Step("", param))
+                annotation_found = True
             else:
                 for substring in STEP_PREFIXES:
                     if substring in line:
                         text = line.split('("', 1)[1].split('")')[0]
-                        steps.append(Step(text))
+                        if annotation_found:
+                            steps[len(steps) - 1].text = text
+                            annotation_found = False
+                        else:
+                            steps.append(Step(text))
 
     return steps
 
