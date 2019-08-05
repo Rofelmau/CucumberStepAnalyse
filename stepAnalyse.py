@@ -1,8 +1,16 @@
 import os
+import json
+import io
+try:
+    to_unicode = unicode
+except NameError:
+    to_unicode = str
+
 
 STEP_PREFIXES = ["CUKE_STEP_(", "GIVEN(", "WHEN(", "THEN("]
 REGEX_PREFIX = "REGEX_PARAM"
 MAC_TEST_PATH = "/Users/lucaschuller/Documents/GitHub/CocktailCalc"
+
 
 class Step:
 
@@ -12,7 +20,8 @@ class Step:
 
 
 def analyse_step_definitions(self, root_path, file_postfix):
-    _get_step_list(self, MAC_TEST_PATH, file_postfix)
+    steps = _get_step_list(self, root_path, file_postfix)
+    _print_as_json(steps)
 
 
 def _get_file_list(self, path='.', extension='', path_delimiter='/', file_list=[]):
@@ -23,6 +32,7 @@ def _get_file_list(self, path='.', extension='', path_delimiter='/', file_list=[
             file_list = _get_file_list(self, f, extension, path_delimiter, file_list)
         elif os.path.isfile(f) and f.endswith(extension):
             file_list.append(f)
+
     return file_list
 
 
@@ -46,11 +56,17 @@ def _get_step_list(self, root_path, file_postfix):
                         text = line.split('("', 1)[1].split('")')[0]
                         steps.append(Step(text))
 
-    # print(count)
-    # print(steps[0].text)
-    # print(len(steps[0].params))
-    # print(steps[0].params[0])
-    # print(steps[0].params[1])
-    # print(steps[1].text)
-    # print(len(steps[1].params))
-    # print(steps[1].params[0])
+    return steps
+
+
+def _print_as_json(step_list):
+    with io.open('StepDefinitions.json', 'w', encoding='utf8') as outfile:
+        outfile.write(to_unicode('{\n'))
+        outfile.write(to_unicode('  "steps" : [ \n'))
+        for step in step_list:
+            str_ = json.dumps(step.__dict__, indent=4, sort_keys=False, separators=(',', ': '), ensure_ascii=False)
+            outfile.write(to_unicode(str_))
+            if step_list.index(step) != len(step_list) - 1:
+                outfile.write(to_unicode(","))
+            outfile.write(to_unicode("\n"))
+        outfile.write(to_unicode("  ]\n}"))
