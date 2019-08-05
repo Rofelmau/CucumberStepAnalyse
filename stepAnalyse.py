@@ -12,11 +12,18 @@ REGEX_PREFIX = "REGEX_PARAM"
 MAC_TEST_PATH = "/Users/lucaschuller/Documents/GitHub/CocktailCalc"
 
 
-class Step:
+class Step(object):
 
     def __init__(self, text):
         self.text = text
         self.params = list()
+
+
+class Param(object):
+
+    def __init__(self, param, capture):
+        self.param = param
+        self.capture = capture
 
 
 def analyse_step_definitions(self, root_path, file_postfix):
@@ -38,9 +45,9 @@ def _get_file_list(self, path='.', extension='', path_delimiter='/', file_list=[
 
 def _get_step_list(self, root_path, file_postfix):
 
-    steps = list();
+    steps = list()
     file_list = _get_file_list(self, root_path, file_postfix)
-    count = 0;
+    count = 0
 
     for document in file_list:
         count = count+1
@@ -49,7 +56,8 @@ def _get_step_list(self, root_path, file_postfix):
         for line in current_file:
             if REGEX_PREFIX in line:
                 param = line.split('(', 1)[1].split(',')[0]
-                steps[len(steps)-1].params.append(param)
+                capture = _get_param_capture(steps[len(steps)-1])
+                steps[len(steps)-1].params.append(Param(param, capture))
             else:
                 for substring in STEP_PREFIXES:
                     if substring in line:
@@ -59,12 +67,27 @@ def _get_step_list(self, root_path, file_postfix):
     return steps
 
 
+def _get_param_capture(step):
+    count_params = len(step.params)+1
+    splitted_step = step.text.split('(')
+    found_noncapture = 0
+    for i, _string in enumerate(splitted_step):
+        print(i, _string)
+        if _string.startswith("?:") and i <= count_params:
+            found_noncapture += 1
+
+    capture = splitted_step[count_params+found_noncapture].split(')')[0]
+    return capture
+
+
 def _print_as_json(step_list):
     with io.open('StepDefinitions.json', 'w', encoding='utf8') as outfile:
         outfile.write(to_unicode('{\n'))
         outfile.write(to_unicode('  "steps" : [ \n'))
         for step in step_list:
-            str_ = json.dumps(step.__dict__, indent=4, sort_keys=False, separators=(',', ': '), ensure_ascii=False)
+            str_ = json.dumps(step.__dict__, default=lambda o: o.__dict__,
+                              indent=4, sort_keys=False, separators=(',', ': '), ensure_ascii=False)
+
             outfile.write(to_unicode(str_))
             if step_list.index(step) != len(step_list) - 1:
                 outfile.write(to_unicode(","))

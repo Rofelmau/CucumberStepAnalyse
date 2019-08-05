@@ -1,0 +1,275 @@
+{
+  "steps" : [ 
+{
+    "text": "^i started the PolySoft$",
+    "params": []
+},
+{
+    "text": "^i select the (.+) (?:in the ToolBar|device)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i connect to the (.+) via (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i set the QComboBox (.+) to index (\\\\d)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "\\\\d",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i select the item (.+) in the QComboBox (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QComboBox (.+) should show (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QLineEdit (.+) should show (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the date in (.+) should be (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i select (?:view|treeviewitem) (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i select ok in QDialogButtonBox (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^a new device tab should show up$",
+    "params": []
+},
+{
+    "text": "^the connection failed dialog shoud show up$",
+    "params": []
+},
+{
+    "text": "^the QPushButton '(.+)' should be (enabled|disabled)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "enabled|disabled",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i write '(.+)' into QLineEdit '(.+)'$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QLineEdit (.+) should be in password mode$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i wait (\\\\d+) seconds?$",
+    "params": [
+        {
+            "capture": "\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i wait (\\\\d+) milliseconds?$",
+    "params": [
+        {
+            "capture": "\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i (increase|decrease) the value of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) by (\\\\d+)$",
+    "params": [
+        {
+            "capture": "increase|decrease",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i set the value of the (?:QDoubleSpinBox|QSpinBox) (.+) to (\\\\d+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i close the current device tab(?:| and (save|dont save))$",
+    "params": [
+        {
+            "capture": "save|dont save",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i close all device tabs(?:| and (save|dont save))$",
+    "params": [
+        {
+            "capture": "save|dont save",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i (?:select|switch to) device tab (\\\\d)$",
+    "params": [
+        {
+            "capture": "\\\\d",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i click the button (.+)$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^(\\\\d) device tabs? should be open$",
+    "params": [
+        {
+            "capture": "\\\\d",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^the (?:dialog|window) '(.+)' should show up$",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^saving and loading$",
+    "params": []
+}
+  ]
+}
