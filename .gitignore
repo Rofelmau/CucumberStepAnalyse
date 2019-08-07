@@ -1,5 +1,5 @@
 /.idea/*
-/.build/*
-/.venv/*
+/build/*
+/venv/*
 main.spec
 *.pyc
