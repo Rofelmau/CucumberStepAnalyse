@@ -294,7 +294,7 @@
     ]
 },
 {
-    "text": "^saving and loading$",
+    "text": "^i load the last safed file$",
     "object_type": "",
     "params": []
 }

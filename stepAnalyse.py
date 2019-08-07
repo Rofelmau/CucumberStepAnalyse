@@ -83,7 +83,6 @@ def _get_param_capture(step):
     splitted_step = step.text.split('(')
     found_noncapture = 0
     for i, _string in enumerate(splitted_step):
-        print(i, _string)
         if _string.startswith("?:") and i <= count_params:
             found_noncapture += 1
 
