@@ -1,6 +1,8 @@
 import os
 import json
 import io
+import sys
+
 try:
     to_unicode = unicode
 except NameError:
@@ -31,6 +33,7 @@ class Param(object):
 def analyse_step_definitions(self, root_path, file_postfix):
     steps = _get_step_list(self, root_path, file_postfix)
     _print_as_json(steps)
+    _json_to_pdf()
 
 
 def _get_file_list(self, path='.', extension='', path_delimiter='/', file_list=[]):
@@ -103,3 +106,38 @@ def _print_as_json(step_list):
                 outfile.write(to_unicode(","))
             outfile.write(to_unicode("\n"))
         outfile.write(to_unicode("  ]\n}"))
+
+
+def error_exit(message):
+    sys.stderr.write(message)
+    sys.exit(1)
+
+
+def _json_to_pdf():
+    fil = open('StepDefinitions.json')
+    lis = fil.readlines()
+    json_data = json.dumps(lis)
+    _print_json_as_pdf(json_data)
+
+
+def _print_json_as_pdf(json):
+    import json
+    import csv
+
+    with open('StepDefinitions.json') as f:
+        data = json.load(f)
+
+    employee_parsed = json.loads('StepDefinitions.json')
+    emp_data = data['steps'][1]['params']
+    employ_data = open('TestData.csv', 'w')
+
+    csvwriter = csv.writer(employ_data)
+
+    count = 0
+    for emp in emp_data:
+        if count == 0:
+            header = emp.keys()
+            csvwriter.writerow(header)
+            count += 1
+        csvwriter.writerow(emp.values())
+    employ_data.close()
