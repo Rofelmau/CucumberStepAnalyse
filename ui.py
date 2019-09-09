@@ -41,5 +41,5 @@ class Ui:
 
     def _run_scanner(self):
         self.result_string.set("")
-        analyse_step_definitions(self, self.root_path.get(), self.file_postfix.get())
-        self.result_string.set("Done")
+        found_steps = analyse_step_definitions(self, self.root_path.get(), self.file_postfix.get())
+        self.result_string.set("Done \n" + str(found_steps) + " Step Deifionitions Found")

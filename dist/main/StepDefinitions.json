@@ -1,0 +1,475 @@
+{
+  "steps" : [ 
+{
+    "text": "^i started the PolySoft$",
+    "object_type": "",
+    "params": []
+},
+{
+    "text": "^i select the (.+) (?:in the ToolBar|device)$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i connect to the (.+) via (.+)$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i set the QComboBox (.+) to index (\\\\d)$",
+    "object_type": "QComboBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "\\\\d",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i select the item (.+) in the QComboBox (.+)$",
+    "object_type": "QComboBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QComboBox (.+) should show (.+)$",
+    "object_type": "QComboBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QLineEdit (.+) should show (.+)$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QLineEdit (.+) should be empty$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the date in (.+) should be (.+)$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i select (?:view|treeviewitem) (.+)$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i select ok in QDialogButtonBox (.+)$",
+    "object_type": "QDialogButtonBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^a new device tab should show up$",
+    "object_type": "",
+    "params": []
+},
+{
+    "text": "^the connection failed dialog shoud show up$",
+    "object_type": "",
+    "params": []
+},
+{
+    "text": "^the QPushButton (.+) should be (enabled|disabled)$",
+    "object_type": "QPushButton\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "enabled|disabled",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i write (.+) into QLineEdit (.+)$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QLineEdit (.+) should be (?:read only|disabled)$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QLineEdit (.+) should be enabled$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QLineEdit (.+) should be in password mode$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i wait (\\\\d+) seconds?$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": "\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i wait (\\\\d+) milliseconds?$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": "\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i (increase|decrease) the value of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) by (\\\\d+)$",
+    "object_type": "QAbstractSpinBox\n",
+    "params": [
+        {
+            "capture": "increase|decrease",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i set the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) to (-?\\\\d+)$",
+    "object_type": "QAbstractSpinBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "-?\\\\d+",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be (.+)$",
+    "object_type": "QAbstractSpinBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the (?:QCheckBox|QRadioButton) (.+) should (|not )be checked$",
+    "object_type": "QAbstractButton\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": "|not ",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i select the (?:QCheckBox|QRadioButton) (.+)$",
+    "object_type": "QAbstractButton\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QRadioButton (.+) should be highlighted as changed and not saved$",
+    "object_type": "QRadioButton\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QRadioButton (.+) should not be highlighted$",
+    "object_type": "QRadioButton\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QCheckBox (.+) should be highlighted as changed and not saved$",
+    "object_type": "QCheckBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the QCheckBox (.+) should not be highlighted$",
+    "object_type": "QCheckBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i close the current device tab(?:| and (save|dont save))$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": "save|dont save",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i close all device tabs(?:| and (save|dont save))$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": "save|dont save",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i (?:select|switch to) device tab (\\\\d)$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": "\\\\d",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^i click the button (.+)$",
+    "object_type": "QPushButton\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^(\\\\d) device tabs? should be open$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": "\\\\d",
+            "param": "int"
+        }
+    ]
+},
+{
+    "text": "^the (?:dialog|window) (.+) should show up$",
+    "object_type": "",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i load the last saved file$",
+    "object_type": "",
+    "params": []
+},
+{
+    "text": "^i transmit my changes to the device$",
+    "object_type": "",
+    "params": []
+},
+{
+    "text": "^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be highlighted as changed and not saved$",
+    "object_type": "QAbstractSpinBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the text of QLineEdit (.+) should be highlighted as changed and not saved$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should not be highlighted$",
+    "object_type": "QAbstractSpinBox\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^the text of QLineEdit (.+) should not be highlighted$",
+    "object_type": "QLineEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i reset the current device to default settings$",
+    "object_type": "",
+    "params": []
+},
+{
+    "text": "^the QPlainTextEdit (.+) should be empty$",
+    "object_type": "QPlainTextEdit\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+},
+{
+    "text": "^i accept the warning dialog$",
+    "object_type": "",
+    "params": []
+},
+{
+    "text": "^the QLabel (.+) should show (.+)$",
+    "object_type": "QLabel\n",
+    "params": [
+        {
+            "capture": ".+",
+            "param": "std::string"
+        },
+        {
+            "capture": ".+",
+            "param": "std::string"
+        }
+    ]
+}
+  ]
+}

@@ -17,23 +17,25 @@ MAC_TEST_PATH = "/Users/lucaschuller/Documents/GitHub/CocktailCalc"
 
 class Step(object):
 
-    def __init__(self, text, object_type=""):
+    def __init__(self, text, file_name, object_type=""):
         self.text = text
         self.object_type = object_type
         self.params = list()
+        self.file_name = file_name
 
 
 class Param(object):
 
-    def __init__(self, param, capture):
-        self.param = param
+    def __init__(self, param_type, param_name, capture):
         self.capture = capture
+        self.param_type = param_type
+        self.param_name = param_name
 
 
 def analyse_step_definitions(self, root_path, file_postfix):
     steps = _get_step_list(self, root_path, file_postfix)
     _print_as_json(steps)
-    _json_to_pdf()
+    return len(steps)
 
 
 def _get_file_list(self, path='.', extension='', path_delimiter='/', file_list=[]):
@@ -57,16 +59,18 @@ def _get_step_list(self, root_path, file_postfix):
     for document in file_list:
         count = count+1
         current_file = open(document, "r")
-
+        current_file_name_with_dir = current_file.name.split('/')
+        current_file_name = current_file_name_with_dir[len(current_file_name_with_dir)-1]
         annotation_found = False
         for line in current_file:
             if REGEX_PREFIX in line:
-                param = line.split('(', 1)[1].split(',')[0]
-                capture = _get_param_capture(steps[len(steps)-1])
-                steps[len(steps)-1].params.append(Param(param, capture))
+                capture = _get_param_capture(steps[len(steps) - 1])
+                param_type = line.split('(', 1)[1].split(',')[0]
+                param_name = line.split('(', 1)[1].split(', ')[1].split(')')[0]
+                steps[len(steps)-1].params.append(Param(param_type, param_name, capture))
             elif OBJECT_TYPE_ANNOTATION in line:
-                param = line.split(OBJECT_TYPE_ANNOTATION, 1)[1]
-                steps.append(Step("", param))
+                param = line.split(OBJECT_TYPE_ANNOTATION, 1)[1].split('\n')[0]
+                steps.append(Step("", current_file_name, param))
                 annotation_found = True
             else:
                 for substring in STEP_PREFIXES:
@@ -76,7 +80,7 @@ def _get_step_list(self, root_path, file_postfix):
                             steps[len(steps) - 1].text = text
                             annotation_found = False
                         else:
-                            steps.append(Step(text))
+                            steps.append(Step(text, current_file_name))
 
     return steps
 
