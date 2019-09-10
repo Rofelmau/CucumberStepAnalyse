@@ -4,7 +4,7 @@
     "text": "^i started the PolySoft$",
     "object_type": "",
     "params": [],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i select the (.+) (?:in the ToolBar|device)$",
@@ -16,7 +16,7 @@
             "param_name": "aDeviceName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i connect to the (.+) via (.+)$",
@@ -33,7 +33,7 @@
             "param_name": "aConnectionTypeName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i set the QComboBox (.+) to index (\\\\d)$",
@@ -50,7 +50,7 @@
             "param_name": "aIndex"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i select the item (.+) in the QComboBox (.+)$",
@@ -67,7 +67,7 @@
             "param_name": "aComboBoxName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QComboBox (.+) should show (.+)$",
@@ -84,7 +84,7 @@
             "param_name": "aComboBoxText"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QLineEdit (.+) should show (.+)$",
@@ -101,7 +101,7 @@
             "param_name": "aText"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QLineEdit (.+) should be empty$",
@@ -113,7 +113,7 @@
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the date in (.+) should be (.+)$",
@@ -130,7 +130,7 @@
             "param_name": "aText"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i select (?:view|treeviewitem) (.+)$",
@@ -142,7 +142,7 @@
             "param_name": "aItemName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i select ok in QDialogButtonBox (.+)$",
@@ -154,19 +154,19 @@
             "param_name": "aButtonBoxName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^a new device tab should show up$",
     "object_type": "",
     "params": [],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the connection failed dialog shoud show up$",
     "object_type": "",
     "params": [],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QPushButton (.+) should be (enabled|disabled)$",
@@ -183,7 +183,7 @@
             "param_name": "aButtonState"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i write (.+) into QLineEdit (.+)$",
@@ -200,7 +200,7 @@
             "param_name": "aInputField"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QLineEdit (.+) should be (?:read only|disabled)$",
@@ -212,7 +212,7 @@
             "param_name": "aInputField"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QLineEdit (.+) should be enabled$",
@@ -224,7 +224,7 @@
             "param_name": "aInputField"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QLineEdit (.+) should be in password mode$",
@@ -236,7 +236,7 @@
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i wait (\\\\d+) seconds?$",
@@ -248,7 +248,7 @@
             "param_name": "aNumber"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i wait (\\\\d+) milliseconds?$",
@@ -260,7 +260,7 @@
             "param_name": "aNumber"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i (increase|decrease) the value of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) by (\\\\d+)$",
@@ -282,7 +282,7 @@
             "param_name": "aValue"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i set the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) to (-?\\\\d+)$",
@@ -299,7 +299,7 @@
             "param_name": "aValue"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be (.+)$",
@@ -316,7 +316,7 @@
             "param_name": "aValue"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the (?:QCheckBox|QRadioButton) (.+) should (|not )be checked$",
@@ -333,7 +333,7 @@
             "param_name": "aState"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i select the (?:QCheckBox|QRadioButton) (.+)$",
@@ -345,7 +345,7 @@
             "param_name": "aButtonName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QRadioButton (.+) should be highlighted as changed and not saved$",
@@ -357,7 +357,7 @@
             "param_name": "aRadioButtonName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QRadioButton (.+) should not be highlighted$",
@@ -369,7 +369,7 @@
             "param_name": "aRadioButtonName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QCheckBox (.+) should be highlighted as changed and not saved$",
@@ -381,7 +381,7 @@
             "param_name": "aCheckBoxName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QCheckBox (.+) should not be highlighted$",
@@ -393,7 +393,7 @@
             "param_name": "aCheckBoxName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i close the current device tab(?:| and (save|dont save))$",
@@ -405,7 +405,7 @@
             "param_name": "aSaveState"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i close all device tabs(?:| and (save|dont save))$",
@@ -417,7 +417,7 @@
             "param_name": "aSaveState"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i (?:select|switch to) device tab (\\\\d)$",
@@ -429,7 +429,7 @@
             "param_name": "aIndex"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i click the button (.+)$",
@@ -441,7 +441,7 @@
             "param_name": "aButtonName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^(\\\\d) device tabs? should be open$",
@@ -453,7 +453,7 @@
             "param_name": "aDeviceTabsAmount"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the (?:dialog|window) (.+) should show up$",
@@ -465,19 +465,19 @@
             "param_name": "aWindowName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i load the last saved file$",
     "object_type": "",
     "params": [],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i transmit my changes to the device$",
     "object_type": "",
     "params": [],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be highlighted as changed and not saved$",
@@ -489,7 +489,7 @@
             "param_name": "aSpinboxName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the text of QLineEdit (.+) should be highlighted as changed and not saved$",
@@ -501,7 +501,7 @@
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should not be highlighted$",
@@ -513,7 +513,7 @@
             "param_name": "aSpinboxName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the text of QLineEdit (.+) should not be highlighted$",
@@ -525,13 +525,13 @@
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i reset the current device to default settings$",
     "object_type": "",
     "params": [],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QPlainTextEdit (.+) should be empty$",
@@ -543,13 +543,13 @@
             "param_name": "atextEditName"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^i accept the warning dialog$",
     "object_type": "",
     "params": [],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
     "text": "^the QLabel (.+) should show (.+)$",
@@ -566,7 +566,7 @@
             "param_name": "aLabelText"
         }
     ],
-    "file_name": "CucumberCoreTests.cpp"
+    "file_name": "/Product_Polysoft/src/PolySoft/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 }
   ]
 }

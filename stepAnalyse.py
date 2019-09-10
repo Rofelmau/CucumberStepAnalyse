@@ -38,8 +38,10 @@ def analyse_step_definitions(self, root_path, file_postfix):
     return len(steps)
 
 
-def _get_file_list(self, path='.', extension='', path_delimiter='/', file_list=[]):
+def _get_file_list(self, path='.', extension='', path_delimiter='/', file_list=None):
 
+    if file_list is None:
+        file_list = list()
     for f in os.listdir(path):
         f = path + path_delimiter + f
         if os.path.isdir(f):
@@ -54,13 +56,10 @@ def _get_step_list(self, root_path, file_postfix):
 
     steps = list()
     file_list = _get_file_list(self, root_path, file_postfix)
-    count = 0
 
     for document in file_list:
-        count = count+1
         current_file = open(document, "r")
-        current_file_name_with_dir = current_file.name.split('/')
-        current_file_name = current_file_name_with_dir[len(current_file_name_with_dir)-1]
+        current_file_name_with_dir = current_file.name.split(root_path)
         annotation_found = False
         for line in current_file:
             if REGEX_PREFIX in line:
@@ -70,7 +69,7 @@ def _get_step_list(self, root_path, file_postfix):
                 steps[len(steps)-1].params.append(Param(param_type, param_name, capture))
             elif OBJECT_TYPE_ANNOTATION in line:
                 param = line.split(OBJECT_TYPE_ANNOTATION, 1)[1].split('\n')[0]
-                steps.append(Step("", current_file_name, param))
+                steps.append(Step("", current_file_name_with_dir[1], param))
                 annotation_found = True
             else:
                 for substring in STEP_PREFIXES:
@@ -80,7 +79,7 @@ def _get_step_list(self, root_path, file_postfix):
                             steps[len(steps) - 1].text = text
                             annotation_found = False
                         else:
-                            steps.append(Step(text, current_file_name))
+                            steps.append(Step(text, current_file_name_with_dir[1]))
 
     return steps
 
