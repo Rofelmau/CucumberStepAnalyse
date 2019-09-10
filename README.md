@@ -1,8 +1,8 @@
-Step Definition Scanner
+# Step Definition Scanner
 
 Step Definition Scanner scans your files for Cucumber C++ Step Definitons and stores data about each found Step Definition in a json file.
 
-Build:
+## Build:
     Build description is for creating executable on Windows with pyinstaller
     pyinstaller can be found here: https://www.pyinstaller.org/
 
@@ -12,7 +12,7 @@ Build:
 
     build will be in folder dist\StepDefinitionScanner
 
-Run:
+## Run:
     To run the Step Definition Scanner just start the executable.
     Enter a Path where to start searching. Search is recursive and scans all sub dirs so be aware to choose a god starting dir.
     Enter a file postfix. postfix can just be .cpp, the hole file name or just the last part of filename.
