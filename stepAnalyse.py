@@ -34,6 +34,7 @@ class Param(object):
 def analyse_step_definitions(self, root_path, file_postfix):
     steps = _get_step_list(self, root_path, file_postfix)
     _print_as_json(steps)
+    _json_to_csv()
     return len(steps)
 
 
@@ -115,31 +116,12 @@ def error_exit(message):
     sys.exit(1)
 
 
-def _json_to_pdf():
-    fil = open('StepDefinitions.json')
-    lis = fil.readlines()
-    json_data = json.dumps(lis)
-    _print_json_as_pdf(json_data)
+def _json_to_csv():
+    from pandas.io.json import json_normalize
 
+    with open('csvtest.json') as data_file:
+        data = json.load(data_file)
 
-def _print_json_as_pdf(json):
-    import json
-    import csv
+    n_data = json_normalize(data, 'params', ['text', 'object_type', 'file_name'])
+    n_data.to_csv("StepDefinitions.csv")
 
-    with open('StepDefinitions.json') as f:
-        data = json.load(f)
-
-    employee_parsed = json.loads('StepDefinitions.json')
-    emp_data = data['steps'][1]['params']
-    employ_data = open('TestData.csv', 'w')
-
-    csvwriter = csv.writer(employ_data)
-
-    count = 0
-    for emp in emp_data:
-        if count == 0:
-            header = emp.keys()
-            csvwriter.writerow(header)
-            count += 1
-        csvwriter.writerow(emp.values())
-    employ_data.close()

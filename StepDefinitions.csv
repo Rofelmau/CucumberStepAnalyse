@@ -1,0 +1,53 @@
+,capture,param_name,param_type,text,object_type,file_name
+0,.+,aDeviceName,std::string,^i select the (.+) (?:in the ToolBar|device)$,,/plugin/src/CucumberCoreTests.cpp
+1,.+,aDeviceName,std::string,^i connect to the (.+) via (.+)$,,/plugin/src/CucumberCoreTests.cpp
+2,.+,aConnectionTypeName,std::string,^i connect to the (.+) via (.+)$,,/plugin/src/CucumberCoreTests.cpp
+3,.+,aComboboxName,std::string,^i set the QComboBox (.+) to index (\\d)$,QComboBox,/plugin/src/CucumberCoreTests.cpp
+4,\\d,aIndex,int,^i set the QComboBox (.+) to index (\\d)$,QComboBox,/plugin/src/CucumberCoreTests.cpp
+5,.+,aItemName,std::string,^i select the item (.+) in the QComboBox (.+)$,QComboBox,/plugin/src/CucumberCoreTests.cpp
+6,.+,aComboBoxName,std::string,^i select the item (.+) in the QComboBox (.+)$,QComboBox,/plugin/src/CucumberCoreTests.cpp
+7,.+,aComboBoxName,std::string,^the QComboBox (.+) should show (.+)$,QComboBox,/plugin/src/CucumberCoreTests.cpp
+8,.+,aComboBoxText,std::string,^the QComboBox (.+) should show (.+)$,QComboBox,/plugin/src/CucumberCoreTests.cpp
+9,.+,aLineEditName,std::string,^the QLineEdit (.+) should show (.+)$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+10,.+,aText,std::string,^the QLineEdit (.+) should show (.+)$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+11,.+,aLineEditName,std::string,^the QLineEdit (.+) should be empty$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+12,.+,aLineEditName,std::string,^the date in (.+) should be (.+)$,,/plugin/src/CucumberCoreTests.cpp
+13,.+,aText,std::string,^the date in (.+) should be (.+)$,,/plugin/src/CucumberCoreTests.cpp
+14,.+,aItemName,std::string,^i select (?:view|treeviewitem) (.+)$,,/plugin/src/CucumberCoreTests.cpp
+15,.+,aButtonBoxName,std::string,^i select ok in QDialogButtonBox (.+)$,QDialogButtonBox,/plugin/src/CucumberCoreTests.cpp
+16,.+,aButtonName,std::string,^the QPushButton (.+) should be (enabled|disabled)$,QPushButton,/plugin/src/CucumberCoreTests.cpp
+17,enabled|disabled,aButtonState,std::string,^the QPushButton (.+) should be (enabled|disabled)$,QPushButton,/plugin/src/CucumberCoreTests.cpp
+18,.+,aText,std::string,^i write (.+) into QLineEdit (.+)$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+19,.+,aInputField,std::string,^i write (.+) into QLineEdit (.+)$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+20,.+,aInputField,std::string,^the QLineEdit (.+) should be (?:read only|disabled)$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+21,.+,aInputField,std::string,^the QLineEdit (.+) should be enabled$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+22,.+,aLineEditName,std::string,^the QLineEdit (.+) should be in password mode$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+23,\\d+,aNumber,int,^i wait (\\d+) seconds?$,,/plugin/src/CucumberCoreTests.cpp
+24,\\d+,aNumber,int,^i wait (\\d+) milliseconds?$,,/plugin/src/CucumberCoreTests.cpp
+25,increase|decrease,aAction,std::string,^i (increase|decrease) the value of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) by (\\d+)$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+26,.+,aSpinboxName,std::string,^i (increase|decrease) the value of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) by (\\d+)$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+27,\\d+,aValue,int,^i (increase|decrease) the value of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) by (\\d+)$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+28,.+,aSpinboxName,std::string,^i set the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) to (-?\\d+)$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+29,-?\\d+,aValue,int,^i set the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) to (-?\\d+)$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+30,.+,aSpinboxName,std::string,^the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be (.+)$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+31,.+,aValue,std::string,^the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be (.+)$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+32,.+,aButtonName,std::string,^the (?:QCheckBox|QRadioButton) (.+) should (|not )be checked$,QAbstractButton,/plugin/src/CucumberCoreTests.cpp
+33,|not ,aState,std::string,^the (?:QCheckBox|QRadioButton) (.+) should (|not )be checked$,QAbstractButton,/plugin/src/CucumberCoreTests.cpp
+34,.+,aButtonName,std::string,^i select the (?:QCheckBox|QRadioButton) (.+)$,QAbstractButton,/plugin/src/CucumberCoreTests.cpp
+35,.+,aRadioButtonName,std::string,^the QRadioButton (.+) should be highlighted as changed and not saved$,QRadioButton,/plugin/src/CucumberCoreTests.cpp
+36,.+,aRadioButtonName,std::string,^the QRadioButton (.+) should not be highlighted$,QRadioButton,/plugin/src/CucumberCoreTests.cpp
+37,.+,aCheckBoxName,std::string,^the QCheckBox (.+) should be highlighted as changed and not saved$,QCheckBox,/plugin/src/CucumberCoreTests.cpp
+38,.+,aCheckBoxName,std::string,^the QCheckBox (.+) should not be highlighted$,QCheckBox,/plugin/src/CucumberCoreTests.cpp
+39,save|dont save,aSaveState,std::string,^i close the current device tab(?:| and (save|dont save))$,,/plugin/src/CucumberCoreTests.cpp
+40,save|dont save,aSaveState,std::string,^i close all device tabs(?:| and (save|dont save))$,,/plugin/src/CucumberCoreTests.cpp
+41,\\d,aIndex,int,^i (?:select|switch to) device tab (\\d)$,,/plugin/src/CucumberCoreTests.cpp
+42,.+,aButtonName,std::string,^i click the button (.+)$,QPushButton,/plugin/src/CucumberCoreTests.cpp
+43,\\d,aDeviceTabsAmount,int,^(\\d) device tabs? should be open$,,/plugin/src/CucumberCoreTests.cpp
+44,.+,aWindowName,std::string,^the (?:dialog|window) (.+) should show up$,,/plugin/src/CucumberCoreTests.cpp
+45,.+,aSpinboxName,std::string,^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be highlighted as changed and not saved$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+46,.+,aLineEditName,std::string,^the text of QLineEdit (.+) should be highlighted as changed and not saved$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+47,.+,aSpinboxName,std::string,^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should not be highlighted$,QAbstractSpinBox,/plugin/src/CucumberCoreTests.cpp
+48,.+,aLineEditName,std::string,^the text of QLineEdit (.+) should not be highlighted$,QLineEdit,/plugin/src/CucumberCoreTests.cpp
+49,.+,atextEditName,std::string,^the QPlainTextEdit (.+) should be empty$,QPlainTextEdit,/plugin/src/CucumberCoreTests.cpp
+50,.+,aLabelName,std::string,^the QLabel (.+) should show (.+)$,QLabel,/plugin/src/CucumberCoreTests.cpp
+51,.+,aLabelText,std::string,^the QLabel (.+) should show (.+)$,QLabel,/plugin/src/CucumberCoreTests.cpp
