@@ -98,8 +98,7 @@ def _get_param_capture(step):
 
 def _print_as_json(step_list):
     with io.open('StepDefinitions.json', 'w', encoding='utf8') as outfile:
-        outfile.write(to_unicode('{\n'))
-        outfile.write(to_unicode('  "steps" : [ \n'))
+        outfile.write(to_unicode('[ \n'))
         for step in step_list:
             str_ = json.dumps(step.__dict__, default=lambda o: o.__dict__,
                               indent=4, sort_keys=False, separators=(',', ': '), ensure_ascii=False)
@@ -108,7 +107,7 @@ def _print_as_json(step_list):
             if step_list.index(step) != len(step_list) - 1:
                 outfile.write(to_unicode(","))
             outfile.write(to_unicode("\n"))
-        outfile.write(to_unicode("  ]\n}"))
+        outfile.write(to_unicode("  ]"))
 
 
 def error_exit(message):
@@ -119,7 +118,7 @@ def error_exit(message):
 def _json_to_csv():
     from pandas.io.json import json_normalize
 
-    with open('csvtest.json') as data_file:
+    with open('StepDefinitions.json') as data_file:
         data = json.load(data_file)
 
     n_data = json_normalize(data, 'params', ['text', 'object_type', 'file_name'])

@@ -1,5 +1,4 @@
-{
-  "steps" : [ 
+[ 
 {
     "text": "^i started the PolySoft$",
     "object_type": "",
@@ -569,4 +568,3 @@
     "file_name": "/plugin/src/CucumberCoreTests.cpp"
 }
   ]
-}
