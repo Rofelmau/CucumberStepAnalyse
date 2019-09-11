@@ -20,6 +20,12 @@ class WorkThread (Thread):
         self.queue.put(steps)
 
 
+def _remove_whitespaces_at_beginning_of_string(_string):
+    while _string.startswith(" "):
+        _string = _string.replace(" ", "", 1)
+    return _string
+
+
 class Ui:
 
     def __init__(self):
@@ -62,13 +68,26 @@ class Ui:
         mainloop()
 
     def _run_scanner(self):
+        search_root_path = self.root_path.get()
+        search_file_postfix = self.file_postfix.get()
+
+        search_root_path = _remove_whitespaces_at_beginning_of_string(search_root_path)
+        if not search_root_path:
+            self.result_label.configure(text="Please enter search path")
+            return
+
+        search_file_postfix = _remove_whitespaces_at_beginning_of_string(search_file_postfix)
+        if not search_file_postfix:
+            self.result_label.configure(text="Please enter file postfix")
+            return
+
         self.result_label.configure(text="Running")
         self.result_label.update()
         que = Queue()
         with que.mutex:
             que.queue.clear()
 
-        thread1 = WorkThread(self.root_path.get(), self.file_postfix.get(), que)
+        thread1 = WorkThread(search_root_path, search_file_postfix, que)
         thread1.start()
 
         x = 0
