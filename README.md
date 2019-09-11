@@ -8,7 +8,7 @@ pyinstaller can be found here: [pyinstaller](https://www.pyinstaller.org/).
 
 in terminal enter:
 ```
-pyinstaller --noconsole -i icon.ico -r icon.ico StepDefinitionScanner.py -y
+pyinstaller --noconsole -i icon.ico StepDefinitionScanner.py -y
 copy icon.ico dist\StepDefinitionScanner
 ```
 
