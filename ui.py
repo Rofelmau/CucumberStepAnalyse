@@ -47,11 +47,10 @@ class Ui:
 
         Label(root_window, text=" ").grid(row=0, column=0, sticky="news")
         Label(root_window, text=" ").grid(row=3, column=1, sticky="news")
-        self.result_string = StringVar()
-        self.result_string.set("")
-        # Label(root_window, textvariable=self.result_string).grid(row=4, column=1, columnspan=3)
+
         self.result_label = Label(root_window, text="")
         self.result_label.grid(row=4, column=1, columnspan=3)
+
         Label(root_window, text=" ").grid(row=5, column=1, sticky="news")
         Label(root_window, text=" ").grid(row=7, column=6, sticky="news")
 

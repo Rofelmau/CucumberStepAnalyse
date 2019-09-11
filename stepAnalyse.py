@@ -12,7 +12,6 @@ except NameError:
 STEP_PREFIXES = ["CUKE_STEP_(", "GIVEN(", "WHEN(", "THEN("]
 REGEX_PREFIX = "REGEX_PARAM"
 OBJECT_TYPE_ANNOTATION = "//@OBJECT_TYPE: "
-MAC_TEST_PATH = "/Users/lucaschuller/Documents/GitHub/CocktailCalc"
 
 
 class Step(object):
