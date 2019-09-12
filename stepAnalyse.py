@@ -31,10 +31,10 @@ class Param(object):
         self.param_name = param_name
 
 
-def analyse_step_definitions(self, root_path, file_postfix):
+def analyse_step_definitions(self, root_path, file_postfix, searched_data):
     steps = _get_step_list(self, root_path, file_postfix)
-    _print_as_json(steps)
-    _json_to_csv()
+    _print_as_json(steps, searched_data)
+    _json_to_csv(searched_data)
     return len(steps)
 
 
@@ -96,18 +96,76 @@ def _get_param_capture(step):
     return capture
 
 
-def _print_as_json(step_list):
-    with io.open('StepDefinitions.json', 'w', encoding='utf8') as outfile:
-        outfile.write(to_unicode('[ \n'))
-        for step in step_list:
-            str_ = json.dumps(step.__dict__, default=lambda o: o.__dict__,
-                              indent=4, sort_keys=False, separators=(',', ': '), ensure_ascii=False)
+def remove_data_from_json(parant_data, position, outstring):
+    import re
+    key = parant_data[position][0]
+    least_one_following_line = False
+    if position < len(parant_data) - 1:
+        for k in range(position + 1, len(parant_data)):
+            least_one_following_line = least_one_following_line or parant_data[k][1].get()
 
-            outfile.write(to_unicode(str_))
-            if step_list.index(step) != len(step_list) - 1:
-                outfile.write(to_unicode(","))
-            outfile.write(to_unicode("\n"))
-        outfile.write(to_unicode("  ]"))
+    if len(parant_data[position]) > 2:
+        starting_pattern = '\n' + r'( +)' + '"' + key + '": '
+        if not least_one_following_line and position > 0:
+            starting_pattern = r'(,?)' + starting_pattern
+
+        sub_elements = '\n' + r'( +)' + '{' + '\n'
+        count = len(parant_data[position][2])
+        for l in range(0,count):
+            sub_elements += r'(.+)' + '\n'
+        sub_elements += r'( +)' + '}' + r'(,?)'
+
+        ending_sub_element = r'(\s)?' + r'( *)' + ']' + r'(,?)' + '\n'
+
+        outstring = re.sub(starting_pattern + '\\[' + r'(' + sub_elements + ')*' + ending_sub_element, '\n', outstring)
+    else:
+        starting_pattern = '\n' + r'( +)' + '"' + key + '": "'
+        if not least_one_following_line and position > 0:
+            starting_pattern = r'(,?)' + starting_pattern
+        outstring = re.sub(starting_pattern + r'(.+)' + '\n', '\n', outstring)
+
+    return outstring
+
+
+def _print_as_json(step_list, searched_data):
+    outstring = to_unicode('[ \n')
+    for step in step_list:
+        str_ = json.dumps(step.__dict__, default=lambda o: o.__dict__,
+                          indent=4, sort_keys=False, separators=(',', ': '), ensure_ascii=False)
+        outstring += to_unicode(str_)
+        if step_list.index(step) != len(step_list) - 1:
+            outstring += to_unicode(",")
+        outstring += to_unicode("\n")
+    outstring += to_unicode("]")
+
+    least_one_data_selected = False
+    for i in range(len(searched_data)):
+        if len(searched_data[i]) <= 2:
+            least_one_data_selected = least_one_data_selected or searched_data[i][1].get()
+        else:
+            for j in range(0, len(searched_data[i][2])):
+                least_one_data_selected = least_one_data_selected or searched_data[i][2][j][1].get()
+
+    if least_one_data_selected:
+        for i in range(len(searched_data)):
+            if len(searched_data[i]) <= 2:
+                if not searched_data[i][1].get():
+                    outstring = remove_data_from_json(searched_data, i, outstring)
+            else:
+                least_one_sub_selected = False
+                for j in range(0, len(searched_data[i][2])):
+                    least_one_sub_selected = least_one_sub_selected or searched_data[i][2][j][1].get()
+                if not least_one_sub_selected:
+                    searched_data[i][1].set(False)
+                    outstring = remove_data_from_json(searched_data, i, outstring)
+                else:
+                    searched_data[i][1].set(True)
+                    for j in range(0, len(searched_data[i][2])):
+                        if not searched_data[i][2][j][1].get():
+                            outstring = remove_data_from_json(searched_data[i][2], j, outstring)
+
+    with io.open('StepDefinitions.json', 'w', encoding='utf8') as outfile:
+        outfile.write(outstring)
 
 
 def error_exit(message):
@@ -115,12 +173,20 @@ def error_exit(message):
     sys.exit(1)
 
 
-def _json_to_csv():
+def _json_to_csv(searched_data):
     from pandas.io.json import json_normalize
 
     with open('StepDefinitions.json') as data_file:
         data = json.load(data_file)
 
-    n_data = json_normalize(data, 'params', ['text', 'object_type', 'file_name'])
+    if searched_data[2][1].get():
+        selected_data = []
+        for i in range(len(searched_data)):
+            if len(searched_data[i]) <= 2 and searched_data[i][1].get():
+                selected_data.append(searched_data[i][0])
+
+        n_data = json_normalize(data, 'params', selected_data)
+    else:
+        n_data = json_normalize(data)
     n_data.to_csv("StepDefinitions.csv")
 

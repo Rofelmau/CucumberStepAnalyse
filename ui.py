@@ -6,16 +6,17 @@ import time
 from queue import Queue
 
 
-class WorkThread (Thread):
+class WorkThread(Thread):
 
-    def __init__(self, root_path, file_postfix, queue):
+    def __init__(self, root_path, file_postfix, searched_data, queue):
         Thread.__init__(self)
         self.path = root_path
         self.postfix = file_postfix
         self.queue = queue
+        self.searched_data = searched_data
 
     def run(self):
-        steps = analyse_step_definitions(self, self.path, self.postfix)
+        steps = analyse_step_definitions(self, self.path, self.postfix, self.searched_data)
         self.queue.empty()
         self.queue.put(steps)
 
@@ -37,26 +38,81 @@ class Ui:
         root_window.grid_rowconfigure(2, weight=1)
         root_window.grid_rowconfigure(3, weight=1)
 
-        Label(root_window, text="ROOT_PATH: ").grid(row=1, column=1, sticky=E)
+        row = 0
+        Label(root_window, text=" ").grid(row=row, column=0, sticky="news")
+
+        row = 1
+        Label(root_window, text="ROOT_PATH: ").grid(row=row, column=1, sticky=E)
         self.root_path = Entry(root_window)
-        self.root_path.grid(row=1, column=2, columnspan=2, sticky="news")
+        self.root_path.grid(row=row, column=2, columnspan=2, sticky="news")
 
-        Label(root_window, text="FILE_POSTFIX: ").grid(row=2, column=1, sticky=E)
+        row = 2
+        Label(root_window, text="FILE_POSTFIX: ").grid(row=row, column=1, sticky=E)
         self.file_postfix = Entry(root_window)
-        self.file_postfix.grid(row=2, column=2, columnspan=2, sticky="news")
+        self.file_postfix.grid(row=row, column=2, columnspan=2, sticky="news")
 
-        Label(root_window, text=" ").grid(row=0, column=0, sticky="news")
-        Label(root_window, text=" ").grid(row=3, column=1, sticky="news")
+        row = 3
+        Label(root_window, text=" ").grid(row=row, column=1, sticky="news")
 
+        row = 4
+        Label(root_window, text="select the data you want to collect").grid(row=row, column=1, columnspan=3,
+                                                                            sticky="news")
+
+        self.checkbox_values = [
+            ("text", BooleanVar()),
+            ("object_type", BooleanVar()),
+            ("params", BooleanVar(),
+             [
+                 ("capture", BooleanVar()),
+                 ("param_type", BooleanVar()),
+                 ("param_name", BooleanVar())
+             ]
+             ),
+            ("file_name", BooleanVar())
+
+        ]
+
+        col = 1
+        row = 5
+        for i in range(len(self.checkbox_values)):
+            self.checkbox_values[i][1].set(True)
+            if len(self.checkbox_values[i]) <= 2:
+                checkbutton = Checkbutton(root_window, text=self.checkbox_values[i][0],
+                                          variable=self.checkbox_values[i][1])
+                checkbutton.grid(row=row, column=col, sticky='news')
+                col += 1
+                if col == 4:
+                    row += 1
+                    col = 1
+            else:
+                for j in range(0, len(self.checkbox_values[i][2])):
+                    self.checkbox_values[i][2][j][1].set(True)
+                    checkbutton = Checkbutton(root_window, text=self.checkbox_values[i][2][j][0],
+                                              variable=self.checkbox_values[i][2][j][1])
+                    checkbutton.grid(row=row, column=col, sticky='news')
+                    col += 1
+                    if col == 4:
+                        row += 1
+                        col = 1
+
+        row = 7
+        Label(root_window, text=" ").grid(row=row, column=1, sticky="news")
+
+        row = 8
         self.result_label = Label(root_window, text="")
-        self.result_label.grid(row=4, column=1, columnspan=3)
+        self.result_label.grid(row=row, column=1, columnspan=3)
 
-        Label(root_window, text=" ").grid(row=5, column=1, sticky="news")
-        Label(root_window, text=" ").grid(row=7, column=6, sticky="news")
+        row = 9
+        Label(root_window, text=" ").grid(row=row, column=6, sticky="news")
 
+        row = 10
         ttk.Style().configure('green/black.TButton', foreground='black', background='black')
-        button_run_scan = ttk.Button(root_window, text="Run Scanner", command=self._run_scanner, style='green/black.TButton')
-        button_run_scan.grid(row=6, column=1, columnspan=3, sticky="news")
+        button_run_scan = ttk.Button(root_window, text="Run Scanner", command=self._run_scanner,
+                                     style='green/black.TButton')
+        button_run_scan.grid(row=row, column=1, columnspan=3, sticky="news")
+
+        row = 11
+        Label(root_window, text=" ").grid(row=row, column=6, sticky="news")
 
         window_width = root_window.winfo_reqwidth()
         window_height = root_window.winfo_reqheight()
@@ -86,7 +142,7 @@ class Ui:
         with que.mutex:
             que.queue.clear()
 
-        thread1 = WorkThread(search_root_path, search_file_postfix, que)
+        thread1 = WorkThread(search_root_path, search_file_postfix, self.checkbox_values, que)
         thread1.start()
 
         x = 0

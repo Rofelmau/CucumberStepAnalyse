@@ -5,10 +5,11 @@
 	<meta charset="UTF-8">
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <!--===============================================================================================-->
 </head>
 <body>
-
+	
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
@@ -16,6 +17,21 @@
 					<table>
 						<thead>
 							<tr class="table100-head">
+								<th class="column1">Test</th>
+								<th class="column2">Test</th>
+							</tr>
+						</thead>
+						<tbody id="selection_section">
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head" id="steptabHead">
 								<th class="column1">Text</th>
 								<th class="column2">Object Type</th>
 								<th class="column2">Datei</th>
@@ -34,62 +50,126 @@
 	</div>
 	
 <script>
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-	var singleKeys = {0: "text", 1: "object_type", 2: "file_name"};
-	var multiKeys = { "params" : {0: "param_name", 1: "param_type", 2: "capture"} };
-    var myObj = JSON.parse(this.responseText);
-	console.log(myObj);
-	for (var step in myObj) {
-		span = myObj[step].params.length;
-		stringrow = "";
+var singleKeys = {0: "text", 1: "object_type", 2: "file_name"};
+var multiKeys = { "params" : {0: "param_name", 1: "param_type", 2: "capture"} };
+
+selection_buttons = "<fieldset>";
+for (var data in singleKeys) {
+	selection_buttons += '<tr><td><label>' + singleKeys[data] + '</label></td><td><input type="checkbox" id="' + singleKeys[data] + '" name="' + singleKeys[data] + '" value="' + singleKeys[data] + '" checked></td></tr>'
+}
+for (var data in multiKeys) {
+	for (var subdata in multiKeys[data]) {
+		selection_buttons += '<tr><td><label>' + multiKeys[data][subdata] + '</label></td><td><input type="checkbox" id="' + multiKeys[data][subdata] + '" name="' + multiKeys[data][subdata] + '" value="' + multiKeys[data][subdata] + '" checked></td></tr>'
+	}
+}
+selection_buttons += '<tr><td></td><td><div id="buttonReload" data-role="button">click for reload table</div></td></tr>'
+document.getElementById("selection_section").innerHTML += selection_buttons + '</fieldset>';
+
+function loadTable() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
 		
-		stringrow += '<tr>';
-		var spanValue = 1;
-		if (span > 1) {
-			spanValue = span;
-		}
+		var selectedSingleKeys = {};
+		var countSelections = 0
 		for (var key in singleKeys) {
-			stringrow += '<td rowspan="' + spanValue + '">' + myObj[step][singleKeys[key]] + '</td>';
+			if ($("#" + singleKeys[key]).is(":checked")) {
+				selectedSingleKeys[countSelections] = singleKeys[key];
+				countSelections += 1;
+			}
 		}
-
+		
+		var selectedMultiKeys = {};
+		var countSelections = 0;
 		for (var key in multiKeys) {
-
-			for (var subkey in multiKeys[key]) {
-				if (span == 0) {
-					stringrow += '<td></td>';
-				}
-				else if (span > 0) {				
-					stringrow += '<td>' + myObj[step].params[0][multiKeys[key][subkey]] + '</td>';
+			selectedMultiKeys[countSelections] = {};
+			var countSubSelections = 0;
+			for (var subKey in multiKeys[key]) {
+				if ($("#" + multiKeys[key][subKey]).is(":checked")) {
+					selectedMultiKeys[countSelections][countSubSelections] = multiKeys[key][subKey];
+					countSubSelections += 1;
 				}
 			}
-
 		}
-		stringrow += '</tr>'
+		
+		var tabhead = "";
+		var x = 1;
+		for (var head in selectedSingleKeys) {
+			tabhead += '<th class="column' + x + '">' + selectedSingleKeys[head] + '</th>';
+			x += 1;
+		}
+		for (var head in selectedMultiKeys) {
+			for (var subhead in selectedMultiKeys[head]) {
+				tabhead += '<th class="column' + x + '">' + selectedMultiKeys[head][subhead] + '</th>';
+				x += 1;
+			}
+		}
+		document.getElementById("steptabHead").innerHTML = "";
+		document.getElementById("steptabHead").innerHTML += tabhead;
 
-		if (span > 1) {
+		
+		var myObj = JSON.parse(this.responseText);
+		console.log(myObj);
+		for (var step in myObj) {
+			span = myObj[step].params.length;
+			stringrow = "";
 			
-			for (var i = 1; i < span; i++ ) {
-				stringrow += '<tr>';
-				for (var key in multiKeys) {
-					for (var subkey in multiKeys[key]) {
-						stringrow += '<td>' + myObj[step].params[i][multiKeys[key][subkey]] + '</td>';
+			stringrow += '<tr>';
+			var spanValue = 1;
+			if (span > 1) {
+				spanValue = span;
+			}
+			for (var key in selectedSingleKeys) {
+				stringrow += '<td rowspan="' + spanValue + '">' + myObj[step][selectedSingleKeys[key]] + '</td>';
+			}
+
+			for (var key in selectedMultiKeys) {
+
+				for (var subkey in selectedMultiKeys[key]) {
+					if (span == 0) {
+						stringrow += '<td></td>';
 					}
+					else if (span > 0) {				
+						stringrow += '<td>' + myObj[step].params[0][selectedMultiKeys[key][subkey]] + '</td>';
+					}
+				}
+
+			}
+			stringrow += '</tr>'
+
+			if (span > 1) {
+				
+				for (var i = 1; i < span; i++ ) {
+					stringrow += '<tr>';
+					for (var key in selectedMultiKeys) {
+						for (var subkey in selectedMultiKeys[key]) {
+							stringrow += '<td>' + myObj[step].params[i][selectedMultiKeys[key][subkey]] + '</td>';
+						}
+					}
+					stringrow += '</tr>';
 				}
 				stringrow += '</tr>';
 			}
-			stringrow += '</tr>';
+			
+			
+			document.getElementById("demo").innerHTML += stringrow;	
 		}
 		
-		
-		document.getElementById("demo").innerHTML += stringrow;	
-	}
-    
-  }
-};
-xmlhttp.open("GET", "StepDefinitions.json", true);
-xmlhttp.send();
+	  }
+	};
+	xmlhttp.open("GET", "StepDefinitions.json", true);
+	xmlhttp.send();
+}
+
+$(document).ready(function() {
+	loadTable();
+	
+    $("#buttonReload").click(function() {
+        document.getElementById("demo").innerHTML = "";
+		loadTable();
+    });
+});
+
 </script>
 
 <p>Take a look at <a href="StepDefinitions.json" target="_blank">StepDefinitions.json</a></p>
