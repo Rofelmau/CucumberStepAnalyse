@@ -22,7 +22,7 @@ Hit 'Run Scanner' and wait for 'Done' to show up.\
 Result will be stored in StepDefinition.json and StepDefinition.csv in the dir where the executable is placed.
 
 ## Extra:
-The Step Definition Scanner Scans for default Cucumber C++ macros CUKE_STEP_, GIVEN, WHEN, THEN and REGEX_PARAM.\
+The Step Definition Scanner Scans for default Cucumber C++ macros ```CUKE_STEP_```, ```GIVEN```, ```WHEN```, ```THEN``` and ```REGEX_PARAM```.\
 But it also Scanns for ```//@OBJECT_TYPE: ```. This is a self defined annotation for adding information about the Object wich the Step Definition made for. 
 For example: If you write a StepDefinition for pushing a QPushButton the annation could look this: ```//@OBJECT_TYPE: QPushButton```. 
 Place the annotation just above the Step Definition:\
