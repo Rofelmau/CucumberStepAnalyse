@@ -1,6 +1,6 @@
 # Step Definition Scanner
 
-The Step Definition Scanner scans files for Cucumber C++ Step Definitons and stores data about each found Step Definition in a json and a csv file.
+The Step Definition Scanner scans files for Cucumber C++ Step Definitons and stores informations about each found Step Definition in a json and a csv file.
 
 ## Build:
 This description is for creating executable on Windows with pyinstaller.\
@@ -21,9 +21,10 @@ Enter a file postfix. postfix can just be .cpp, the hole file name or just the l
 Hit 'Run Scanner' and wait for 'Done' to show up.\
 Result will be stored in StepDefinition.json and StepDefinition.csv in the dir where the executable is placed.
 
-## Extra:
+## Informations:
+### Annotations and macros
 The Step Definition Scanner Scans for default Cucumber C++ macros ```CUKE_STEP_```, ```GIVEN```, ```WHEN```, ```THEN``` and ```REGEX_PARAM```.\
-But it also Scanns for ```//@OBJECT_TYPE: ```. This is a self defined annotation for adding information about the Object wich the Step Definition made for. 
+But it also scanns for ```//@OBJECT_TYPE: ```. This is a self defined annotation for adding information about the Object wich the Step Definition is made for. 
 For example: If you write a StepDefinition for pushing a QPushButton the annation could look this: ```//@OBJECT_TYPE: QPushButton```. 
 Place the annotation just above the Step Definition:\
 ```
@@ -36,3 +37,6 @@ CUKE_STEP_("^i click the button (.+)$") {
 	pushButton->click();
 }
 ```
+### WebView
+This reposetory contains a webview.html for displaying the results in a nice table. The webview page musst be opend on a webserver because it loads the StepDefnition.json using http-request.\
+One simple soloution to this is using Web Server for Chrome.
