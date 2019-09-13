@@ -8,15 +8,16 @@ from queue import Queue
 
 class WorkThread(Thread):
 
-    def __init__(self, root_path, file_postfix, searched_data, queue):
+    def __init__(self, root_path, file_postfix, save_result_dir, searched_data, queue):
         Thread.__init__(self)
         self.path = root_path
         self.postfix = file_postfix
+        self.save_path = save_result_dir
         self.queue = queue
         self.searched_data = searched_data
 
     def run(self):
-        steps = analyse_step_definitions(self, self.path, self.postfix, self.searched_data)
+        steps = analyse_step_definitions(self, self.path, self.postfix, self.save_path, self.searched_data)
         self.queue.empty()
         self.queue.put(steps)
 
@@ -30,6 +31,14 @@ def _remove_whitespaces_at_beginning_of_string(_string):
 class Ui:
 
     def __init__(self):
+
+        def callback(event):
+            root_window.after(50, select_all, event.widget)
+
+        def select_all(widget):
+            widget.select_range(0, 'end')
+            widget.icursor('end')
+
         root_window = Tk()
         root_window.title("Step Definition Scanner")
         root_window.iconbitmap('icon.ico')
@@ -43,18 +52,26 @@ class Ui:
 
         row = 1
         Label(root_window, text="ROOT_PATH: ").grid(row=row, column=1, sticky=E)
-        self.root_path = Entry(root_window)
+        self.root_path = Entry(root_window, width=50)
         self.root_path.grid(row=row, column=2, columnspan=2, sticky="news")
+        self.root_path.bind('<Control-a>', callback)
 
         row = 2
         Label(root_window, text="FILE_POSTFIX: ").grid(row=row, column=1, sticky=E)
-        self.file_postfix = Entry(root_window)
+        self.file_postfix = Entry(root_window, width=50)
         self.file_postfix.grid(row=row, column=2, columnspan=2, sticky="news")
+        self.file_postfix.bind('<Control-a>', callback)
 
         row = 3
-        Label(root_window, text=" ").grid(row=row, column=1, sticky="news")
+        Label(root_window, text="SAVE_RESULT_DIR: ").grid(row=row, column=1, sticky=E)
+        self.save_result_dir = Entry(root_window, width=50)
+        self.save_result_dir.grid(row=row, column=2, columnspan=2, sticky="news")
+        self.save_result_dir.bind('<Control-a>', callback)
 
         row = 4
+        Label(root_window, text=" ").grid(row=row, column=1, sticky="news")
+
+        row = 5
         Label(root_window, text="select the data you want to collect").grid(row=row, column=1, columnspan=3,
                                                                             sticky="news")
 
@@ -73,7 +90,7 @@ class Ui:
         ]
 
         col = 1
-        row = 5
+        row = 6
         for i in range(len(self.checkbox_values)):
             self.checkbox_values[i][1].set(True)
             if len(self.checkbox_values[i]) <= 2:
@@ -95,23 +112,23 @@ class Ui:
                         row += 1
                         col = 1
 
-        row = 7
+        row = row+1  # 8
         Label(root_window, text=" ").grid(row=row, column=1, sticky="news")
 
-        row = 8
+        row = row+1  # 9
         self.result_label = Label(root_window, text="")
         self.result_label.grid(row=row, column=1, columnspan=3)
 
-        row = 9
+        row = row+1  # 10
         Label(root_window, text=" ").grid(row=row, column=6, sticky="news")
 
-        row = 10
+        row = row+1  # 11
         ttk.Style().configure('green/black.TButton', foreground='black', background='black')
         button_run_scan = ttk.Button(root_window, text="Run Scanner", command=self._run_scanner,
                                      style='green/black.TButton')
         button_run_scan.grid(row=row, column=1, columnspan=3, sticky="news")
 
-        row = 11
+        row = row+1  # 12
         Label(root_window, text=" ").grid(row=row, column=6, sticky="news")
 
         window_width = root_window.winfo_reqwidth()
@@ -119,12 +136,14 @@ class Ui:
         position_horizontal = int(root_window.winfo_screenwidth() / 2 - window_width / 2)
         position_vertical = int(root_window.winfo_screenheight() / 2 - window_height / 2)
         root_window.geometry("+{}+{}".format(position_horizontal, position_vertical))
-
+        root_window.update()
+        root_window.minsize(root_window.winfo_width(), root_window.winfo_height())
         mainloop()
 
     def _run_scanner(self):
         search_root_path = self.root_path.get()
         search_file_postfix = self.file_postfix.get()
+        save_result_dir = self.save_result_dir.get()
 
         search_root_path = _remove_whitespaces_at_beginning_of_string(search_root_path)
         if not search_root_path:
@@ -136,13 +155,17 @@ class Ui:
             self.result_label.configure(text="Please enter file postfix")
             return
 
+        save_result_dir = _remove_whitespaces_at_beginning_of_string(save_result_dir)
+        if save_result_dir and not save_result_dir.endswith('\\') and not save_result_dir.endswith('/'):
+            save_result_dir += '\\'
+
         self.result_label.configure(text="Running")
         self.result_label.update()
         que = Queue()
         with que.mutex:
             que.queue.clear()
 
-        thread1 = WorkThread(search_root_path, search_file_postfix, self.checkbox_values, que)
+        thread1 = WorkThread(search_root_path, search_file_postfix, save_result_dir, self.checkbox_values, que)
         thread1.start()
 
         x = 0

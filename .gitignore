@@ -5,3 +5,5 @@
 *.pyc
 /dist/main/*
 /dist/StepDefinitionScanner/*
+StepDefinitions.csv
+StepDefinitions.json

@@ -32,10 +32,10 @@ class Param(object):
         self.param_name = param_name
 
 
-def analyse_step_definitions(self, root_path, file_postfix, searched_data):
+def analyse_step_definitions(self, root_path, file_postfix, save_path, searched_data):
     steps = _get_step_list(self, root_path, file_postfix)
-    _print_as_json(steps, searched_data)
-    _json_to_csv(searched_data)
+    _print_as_json(steps, searched_data, save_path)
+    _json_to_csv(searched_data, save_path)
     return len(steps)
 
 
@@ -127,7 +127,7 @@ def remove_data_from_json(parant_data, position, outstring):
     return outstring
 
 
-def _print_as_json(step_list, searched_data):
+def _print_as_json(step_list, searched_data, save_path):
     outstring = to_unicode('[ \n')
     for step in step_list:
         str_ = json.dumps(step.__dict__, default=lambda o: o.__dict__,
@@ -164,12 +164,12 @@ def _print_as_json(step_list, searched_data):
                         if not searched_data[i][2][j][1].get():
                             outstring = remove_data_from_json(searched_data[i][2], j, outstring)
 
-    with io.open('StepDefinitions.json', 'w', encoding='utf8') as outfile:
+    with io.open(save_path + 'StepDefinitions.json', 'w', encoding='utf8') as outfile:
         outfile.write(outstring)
 
 
-def _json_to_csv(searched_data):
-    with open('StepDefinitions.json') as data_file:
+def _json_to_csv(searched_data, save_path):
+    with open(save_path + 'StepDefinitions.json') as data_file:
         data = json.load(data_file)
 
     if searched_data[2][1].get():
@@ -181,4 +181,4 @@ def _json_to_csv(searched_data):
         n_data = json_normalize(data, 'params', selected_data)
     else:
         n_data = json_normalize(data)
-    n_data.to_csv("StepDefinitions.csv")
+    n_data.to_csv(save_path + 'StepDefinitions.csv')

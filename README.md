@@ -12,7 +12,9 @@ pyinstaller --noconsole -i icon.ico StepDefinitionScanner.py -y
 copy icon.ico dist\StepDefinitionScanner
 ```
 
-build will be in folder dist\StepDefinitionScanner
+build will be in folder dist\StepDefinitionScanner\
+\
+Inside the dist folder you will find a zip file containing a preebuild version ready to run. Just unzip the archieve and run the StepDefinitionScanner.exe
 
 ## Run:
 To run the Step Definition Scanner just start the executable.\
