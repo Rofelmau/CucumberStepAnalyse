@@ -3,4 +3,5 @@
 /venv/*
 *.spec
 *.pyc
-/dist/*
+/dist/main/*
+/dist/StepDefinitionScanner/*

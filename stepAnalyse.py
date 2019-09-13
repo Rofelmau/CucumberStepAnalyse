@@ -1,7 +1,8 @@
+from pandas.io.json import json_normalize
 import os
 import json
 import io
-import sys
+from re import sub
 
 try:
     to_unicode = unicode
@@ -97,7 +98,6 @@ def _get_param_capture(step):
 
 
 def remove_data_from_json(parant_data, position, outstring):
-    import re
     key = parant_data[position][0]
     least_one_following_line = False
     if position < len(parant_data) - 1:
@@ -117,12 +117,12 @@ def remove_data_from_json(parant_data, position, outstring):
 
         ending_sub_element = r'(\s)?' + r'( *)' + ']' + r'(,?)' + '\n'
 
-        outstring = re.sub(starting_pattern + '\\[' + r'(' + sub_elements + ')*' + ending_sub_element, '\n', outstring)
+        outstring = sub(starting_pattern + '\\[' + r'(' + sub_elements + ')*' + ending_sub_element, '\n', outstring)
     else:
         starting_pattern = '\n' + r'( +)' + '"' + key + '": "'
         if not least_one_following_line and position > 0:
             starting_pattern = r'(,?)' + starting_pattern
-        outstring = re.sub(starting_pattern + r'(.+)' + '\n', '\n', outstring)
+        outstring = sub(starting_pattern + r'(.+)' + '\n', '\n', outstring)
 
     return outstring
 
@@ -168,14 +168,7 @@ def _print_as_json(step_list, searched_data):
         outfile.write(outstring)
 
 
-def error_exit(message):
-    sys.stderr.write(message)
-    sys.exit(1)
-
-
 def _json_to_csv(searched_data):
-    from pandas.io.json import json_normalize
-
     with open('StepDefinitions.json') as data_file:
         data = json.load(data_file)
 
@@ -189,4 +182,3 @@ def _json_to_csv(searched_data):
     else:
         n_data = json_normalize(data)
     n_data.to_csv("StepDefinitions.csv")
-

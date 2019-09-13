@@ -1,570 +1,473 @@
 [ 
 {
-    "text": "^i started the PolySoft$",
     "object_type": "",
     "params": [],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i select the (.+) (?:in the ToolBar|device)$",
     "object_type": "",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aDeviceName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i connect to the (.+) via (.+)$",
     "object_type": "",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aDeviceName"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aConnectionTypeName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i set the QComboBox (.+) to index (\\\\d)$",
     "object_type": "QComboBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aComboboxName"
         },
         {
             "capture": "\\\\d",
-            "param_type": "int",
             "param_name": "aIndex"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i select the item (.+) in the QComboBox (.+)$",
     "object_type": "QComboBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aItemName"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aComboBoxName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QComboBox (.+) should show (.+)$",
     "object_type": "QComboBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aComboBoxName"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aComboBoxText"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QLineEdit (.+) should show (.+)$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLineEditName"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aText"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QLineEdit (.+) should be empty$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the date in (.+) should be (.+)$",
     "object_type": "",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLineEditName"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aText"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i select (?:view|treeviewitem) (.+)$",
     "object_type": "",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aItemName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i select ok in QDialogButtonBox (.+)$",
     "object_type": "QDialogButtonBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aButtonBoxName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^a new device tab should show up$",
     "object_type": "",
     "params": [],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the connection failed dialog shoud show up$",
     "object_type": "",
     "params": [],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QPushButton (.+) should be (enabled|disabled)$",
     "object_type": "QPushButton",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aButtonName"
         },
         {
             "capture": "enabled|disabled",
-            "param_type": "std::string",
             "param_name": "aButtonState"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i write (.+) into QLineEdit (.+)$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aText"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aInputField"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QLineEdit (.+) should be (?:read only|disabled)$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aInputField"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QLineEdit (.+) should be enabled$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aInputField"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QLineEdit (.+) should be in password mode$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i wait (\\\\d+) seconds?$",
     "object_type": "",
     "params": [
         {
             "capture": "\\\\d+",
-            "param_type": "int",
             "param_name": "aNumber"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i wait (\\\\d+) milliseconds?$",
     "object_type": "",
     "params": [
         {
             "capture": "\\\\d+",
-            "param_type": "int",
             "param_name": "aNumber"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i (increase|decrease) the value of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) by (\\\\d+)$",
     "object_type": "QAbstractSpinBox",
     "params": [
         {
             "capture": "increase|decrease",
-            "param_type": "std::string",
             "param_name": "aAction"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aSpinboxName"
         },
         {
             "capture": "\\\\d+",
-            "param_type": "int",
             "param_name": "aValue"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i set the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) to (-?\\\\d+)$",
     "object_type": "QAbstractSpinBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aSpinboxName"
         },
         {
             "capture": "-?\\\\d+",
-            "param_type": "int",
             "param_name": "aValue"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the value of the (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be (.+)$",
     "object_type": "QAbstractSpinBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aSpinboxName"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aValue"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the (?:QCheckBox|QRadioButton) (.+) should (|not )be checked$",
     "object_type": "QAbstractButton",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aButtonName"
         },
         {
             "capture": "|not ",
-            "param_type": "std::string",
             "param_name": "aState"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i select the (?:QCheckBox|QRadioButton) (.+)$",
     "object_type": "QAbstractButton",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aButtonName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QRadioButton (.+) should be highlighted as changed and not saved$",
     "object_type": "QRadioButton",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aRadioButtonName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QRadioButton (.+) should not be highlighted$",
     "object_type": "QRadioButton",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aRadioButtonName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QCheckBox (.+) should be highlighted as changed and not saved$",
     "object_type": "QCheckBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aCheckBoxName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QCheckBox (.+) should not be highlighted$",
     "object_type": "QCheckBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aCheckBoxName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i close the current device tab(?:| and (save|dont save))$",
     "object_type": "",
     "params": [
         {
             "capture": "save|dont save",
-            "param_type": "std::string",
             "param_name": "aSaveState"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i close all device tabs(?:| and (save|dont save))$",
     "object_type": "",
     "params": [
         {
             "capture": "save|dont save",
-            "param_type": "std::string",
             "param_name": "aSaveState"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i (?:select|switch to) device tab (\\\\d)$",
     "object_type": "",
     "params": [
         {
             "capture": "\\\\d",
-            "param_type": "int",
             "param_name": "aIndex"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i click the button (.+)$",
     "object_type": "QPushButton",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aButtonName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^(\\\\d) device tabs? should be open$",
     "object_type": "",
     "params": [
         {
             "capture": "\\\\d",
-            "param_type": "int",
             "param_name": "aDeviceTabsAmount"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the (?:dialog|window) (.+) should show up$",
     "object_type": "",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aWindowName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i load the last saved file$",
     "object_type": "",
     "params": [],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i transmit my changes to the device$",
     "object_type": "",
     "params": [],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should be highlighted as changed and not saved$",
     "object_type": "QAbstractSpinBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aSpinboxName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the text of QLineEdit (.+) should be highlighted as changed and not saved$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the text of (?:QDoubleSpinBox|QSpinBox|QAbstractSpinBox|spinBox) (.+) should not be highlighted$",
     "object_type": "QAbstractSpinBox",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aSpinboxName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the text of QLineEdit (.+) should not be highlighted$",
     "object_type": "QLineEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLineEditName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i reset the current device to default settings$",
     "object_type": "",
     "params": [],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QPlainTextEdit (.+) should be empty$",
     "object_type": "QPlainTextEdit",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "atextEditName"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^i accept the warning dialog$",
     "object_type": "",
     "params": [],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 },
 {
-    "text": "^the QLabel (.+) should show (.+)$",
     "object_type": "QLabel",
     "params": [
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLabelName"
         },
         {
             "capture": ".+",
-            "param_type": "std::string",
             "param_name": "aLabelText"
         }
     ],
-    "file_name": "/plugin/src/CucumberCoreTests.cpp"
+    "file_name": "/test/cucumber/plugin/src/CucumberCoreTests.cpp"
 }
 ]

@@ -58,6 +58,7 @@ class Ui:
         Label(root_window, text="select the data you want to collect").grid(row=row, column=1, columnspan=3,
                                                                             sticky="news")
 
+        # needs to match order of params in class Step and class Param
         self.checkbox_values = [
             ("text", BooleanVar()),
             ("object_type", BooleanVar()),
@@ -69,7 +70,6 @@ class Ui:
              ]
              ),
             ("file_name", BooleanVar())
-
         ]
 
         col = 1
