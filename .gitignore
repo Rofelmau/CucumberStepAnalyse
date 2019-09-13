@@ -1,9 +1,11 @@
+StepDefinitions.csv
+StepDefinitions.json
+*.spec
+*.pyc
+*.log
 /.idea/*
 /build/*
 /venv/*
-*.spec
-*.pyc
 /dist/main/*
 /dist/StepDefinitionScanner/*
-StepDefinitions.csv
-StepDefinitions.json
+
