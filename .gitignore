@@ -8,4 +8,3 @@ StepDefinitions.json
 /venv/*
 /dist/main/*
 /dist/StepDefinitionScanner/*
-

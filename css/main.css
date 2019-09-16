@@ -206,3 +206,11 @@ tfoot tr th:last-child {
   text-align: right;
   padding-right: 62px;
 }
+
+.buttonReload {
+    cursor: pointer;
+}
+
+input, select {
+    cursor: pointer;
+}
