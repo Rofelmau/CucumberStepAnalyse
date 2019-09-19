@@ -1,4 +1,5 @@
 var myObj;
+var lastselectedRow;
 
 function Table_write_rows(SortBykey, SortBykeyValue, selectedSingleKeys, selectedMultiKeys) {
 	for (var step in myObj) {
@@ -7,22 +8,24 @@ function Table_write_rows(SortBykey, SortBykeyValue, selectedSingleKeys, selecte
 			stringrow = "";
 					
 			stringrow += '<tr>';
+			var tdClass = 'class="row' + step + '"';
+			var divTag = '<div class="selectable row' + step + '" data-role="button">';
 			var spanValue = 1;
 			if (span > 1) {
 				spanValue = span;
 			}
 			for (var key in selectedSingleKeys) {
-				stringrow += '<td rowspan="' + spanValue + '">' + myObj[step][selectedSingleKeys[key]] + '</td>';
+				stringrow += '<td ' + tdClass + ' rowspan="' + spanValue + '">' + divTag + myObj[step][selectedSingleKeys[key]] + '</div></td>';
 			}
 
 			for (var key in selectedMultiKeys) {
 
 				for (var subkey in selectedMultiKeys[key]) {
 					if (span == 0) {
-						stringrow += '<td></td>';
+						stringrow += '<td ' + tdClass + ' >' + divTag + '</div></td>';
 					}
 					else if (span > 0) {				
-						stringrow += '<td>' + myObj[step].params[0][selectedMultiKeys[key][subkey]] + '</td>';
+						stringrow += '<td ' + tdClass + ' >' + divTag + myObj[step].params[0][selectedMultiKeys[key][subkey]] + '</div></td>';
 					}
 				}
 
@@ -35,7 +38,7 @@ function Table_write_rows(SortBykey, SortBykeyValue, selectedSingleKeys, selecte
 					stringrow += '<tr>';
 					for (var key in selectedMultiKeys) {
 						for (var subkey in selectedMultiKeys[key]) {
-							stringrow += '<td>' + myObj[step].params[i][selectedMultiKeys[key][subkey]] + '</td>';
+							stringrow += '<td ' + tdClass + ' >' + divTag + myObj[step].params[i][selectedMultiKeys[key][subkey]] + '</div></td>';
 						}
 					}
 					stringrow += '</tr>';
@@ -44,7 +47,7 @@ function Table_write_rows(SortBykey, SortBykeyValue, selectedSingleKeys, selecte
 			}
 			
 			
-			document.getElementById("demo").innerHTML += stringrow;	
+			document.getElementById("stepDefinitionTable").innerHTML += stringrow;	
 		}
 	}
 }
@@ -92,7 +95,6 @@ function Table_display() {
 	
 	e = document.getElementById("sortingDirection");
 	var sortDir = e.options[e.selectedIndex].value;
-	console.log(sortDir);
 	var sortedValues = [];
 	
 	if (sortBy === "") {
@@ -109,13 +111,32 @@ function Table_display() {
 		if (sortDir == 2) {
 			sortedValues.reverse();
 		}
-		
-		console.log(sortedValues);
-		
+				
 	}
 	for (var obtype in sortedValues) {
 			Table_write_rows(sortBy, sortedValues[obtype], selectedSingleKeys, selectedMultiKeys);
 	}
+}
+
+function highlightRow(classNames) {
+	var rowClass = classNames.split(" ")[1];
+	
+	var divs = document.getElementsByClassName(rowClass);
+	if (divs.length > 0) {
+		for (i = 0; i < divs.length; i++) {
+			divs[i].style.backgroundColor = "lightblue";
+		}
+	}
+	
+	divs = document.getElementsByClassName(lastselectedRow);
+	if (divs.length > 0) {
+		for (i = 0; i < divs.length; i++) {
+			divs[i].style.backgroundColor = "transparent";
+		}
+	}
+
+	lastselectedRow = rowClass;
+	// lastselectedRow
 }
 
 Table_load = function() {
@@ -127,6 +148,13 @@ Table_load = function() {
 		
 		Table_display();
 		
+		var divs = document.getElementsByClassName('selectable');
+		for (div in divs) {
+			divs[div].addEventListener('click', function (event) {
+				highlightRow(jQuery(this).attr("class"));
+			});
+		}
+
 		
 	  }
 	  

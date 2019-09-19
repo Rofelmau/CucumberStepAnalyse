@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Table V01</title>
+	<title>Step Definition Table</title>
 	<meta charset="UTF-8">
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -13,13 +13,13 @@
 	
 	<div class="limiter">
 		<div class="container-table100">
-			<div class="wrap-table100">
+			<div class="wrap-table100 dontPrint">
 				<div class="table100">
 					<table >
 						<thead>
 							<tr class="table100-head">
-								<th class="column1">param</th>
-								<th class="column2">show/hide</th>
+								<th>param</th>
+								<th>show/hide</th>
 							</tr>
 						</thead>
 						<tbody id="selection_section">
@@ -28,14 +28,14 @@
 					</table>
 				</div>
 			</div>
-			<div class="wrap-table100">
+			<div class="wrap-table100 dontPrint">
 				<div class="table100">
 					<table >
 						<thead>
 							<tr class="table100-head">
-								<th class="column1">sort by</th>
-								<th class="column1">direction</th>
-								<th class="column1">reload</th>
+								<th>sort by</th>
+								<th>direction</th>
+								<th>reload</th>
 							</tr>
 						</thead>
 						<tbody id="selection_section">
@@ -69,7 +69,7 @@
 							
 							</tr>
 						</thead>
-						<tbody id="demo">
+						<tbody id="stepDefinitionTable">
 
 						</tbody>
 					</table>
@@ -84,11 +84,11 @@ var multiKeys = { "params" : {0: "param_name", 1: "param_type", 2: "capture"} };
 
 selection_buttons = "<fieldset>";
 for (var data in singleKeys) {
-	selection_buttons += '<tr><td><label>' + singleKeys[data] + '</label></td><td><input type="checkbox" id="' + singleKeys[data] + '" name="' + singleKeys[data] + '" value="' + singleKeys[data] + '" checked></td></tr>'
+	selection_buttons += '<tr><td><label>' + singleKeys[data] + '</label></td><td><div><input type="checkbox" id="' + singleKeys[data] + '" name="' + singleKeys[data] + '" value="' + singleKeys[data] + '" checked></div></td></tr>'
 }
 for (var data in multiKeys) {
 	for (var subdata in multiKeys[data]) {
-		selection_buttons += '<tr><td><label>' + multiKeys[data][subdata] + '</label></td><td><input type="checkbox" id="' + multiKeys[data][subdata] + '" name="' + multiKeys[data][subdata] + '" value="' + multiKeys[data][subdata] + '" checked></td></tr>'
+		selection_buttons += '<tr><td><label>' + multiKeys[data][subdata] + '</label></td><td><div><input type="checkbox" id="' + multiKeys[data][subdata] + '" name="' + multiKeys[data][subdata] + '" value="' + multiKeys[data][subdata] + '" checked></div></td></tr>'
 	}
 }
 selection_buttons += '<tr><td></td><td><div class="buttonReload" data-role="button">click for reload table</div></td></tr>'
@@ -106,14 +106,16 @@ $(document).ready(function() {
 	Table_load();
 	
     $(".buttonReload").click(function() {
-        document.getElementById("demo").innerHTML = "";
+        document.getElementById("stepDefinitionTable").innerHTML = "";
 		Table_display();
     });
+	
+	
 	
 });
 </script>
 
-<p>Take a look at <a href="StepDefinitions.json" target="_blank">StepDefinitions.json</a></p>
+<p class="dontPrint">Take a look at <a href="StepDefinitions.json" target="_blank">StepDefinitions.json</a></p>
 
 </body>
 </html>

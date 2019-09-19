@@ -1,4 +1,28 @@
+@media print {
+	.dontPrint {
+		display: none
+	}
+  
+	@page { 
+		size: A4 landscape;
+		max-height:100%; 
+		max-width:100%;
+	}
+	
+	td {
+		border: solid 1px;
+	}
+	
+    table {
+		zoom: 55%;
+		border-collapse:collapse;
+	}
+	
+	tr {
+		white-space: nowrap;
+	}
 
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
@@ -54,7 +78,7 @@ ul, li {
 
 /* ------------------------------------ */
 input {
-  display: block;
+	display: block;
 	outline: none;
 	border: none !important;
 }
@@ -148,6 +172,15 @@ td {
   padding: 5px 10px;
 }
 
+.selectable {
+	width:100%;
+	min-height:14pt;
+}
+
+input{
+	display:inline-block
+}
+
 tbody tr:nth-child(even) {
   background: WhiteSmoke;
   text-align:center;
@@ -178,37 +211,24 @@ tfoot tr th:last-child {
   font-family: monospace;
 }
 
-.column1 {
-  width: 260px;
-  padding-left: 40px;
-}
-
-.column2 {
-  width: 160px;
-}
-
-.column3 {
-  width: 245px;
-}
-
-.column4 {
-  width: 110px;
-  text-align: right;
-}
-
-.column5 {
-  width: 170px;
-  text-align: right;
-}
-
-.column6 {
-  width: 222px;
-  text-align: right;
-  padding-right: 62px;
-}
-
 .buttonReload {
+	border: solid 1px;
+	padding: 5px;
+	margin: 2px;
+}
+
+.buttonReload:hover {
     cursor: pointer;
+	padding: 6px;
+	margin: 1px;
+	background: white;
+}
+
+.buttonReload:active {
+    cursor: pointer;
+	padding: 4px;
+	margin: 3px;
+	background: white;
 }
 
 input, select {
